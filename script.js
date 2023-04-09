@@ -22,11 +22,13 @@ function writePassword() {
 // Function that generates a string
 // Default password is 8 char in length and does not use special characters
 function generatePassword(length){
-  let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  if(counter < 0)
-  characters = ''
+  let characters = '';
   let word = ' ';
 
+  if(counter <= 0){
+    characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    includeLow,includeUp,includeNum,includeSpecChar = false;
+  }
   if(includeLow)
   characters += lower;
   if(includeUp)
@@ -35,7 +37,7 @@ function generatePassword(length){
   characters += special;
   if(includeNum)
   characters += integers;
-
+  
 
   for (let i = 0; i < length; i++){
     word += characters.charAt(Math.floor(Math.random()*characters.length));
@@ -64,13 +66,16 @@ function writePass(event){
   }else if(choice1 === '2'){
     window.alert("You chose to generate based on content type");
     typeCheck();
-    writePass(8);
+    passLength = 8;
+    writePassword(passLength);
   }else if(choice1 === '3'){
     alert("You chose the most secure option! Both!")
     lengthCheck();
     typeCheck();
     writePassword(passLength);
-  }else{
+  }else if(choice1 === null){
+    return;
+  } else {
     alert("Choose a proper option");
     writePass();
   }
@@ -84,7 +89,7 @@ function writePass(event){
 // check if the entered number is between 8 and 128 if not try again
 // convert input from string to a number
 function lengthCheck(){
-  passLength = window.prompt("Enter a number between 8 and 128");
+  passLength = window.prompt("Enter a number between 8 and 128.");
   passLength = parseInt(passLength);
 
   if (passLength < 8 || passLength > 128){
@@ -109,7 +114,7 @@ function lengthCheck(){
 function typeCheck(){
   counter = 0;
 
-  alert("You will be prompted to choose which character type to include, you must choose at least 1");
+  alert("You will be prompted to choose which character type to include, you must choose at least one.");
   let choice2 = prompt("Would you like to include lowercase characters?" + "\nYes or No?");
   choice2 = choice2.toLowerCase();
   if(choice2 === "yes"){
@@ -155,11 +160,11 @@ function typeCheck(){
   let choice5 = prompt("Would you like to include special characters?" + "\nYes or No");
   choice5 = choice5.toLowerCase();
   if(choice5 === "yes"){
-    alert("You chose to include numbers in your password.");
+    alert("You chose to include special characters in your password.");
     includeSpecChar = true;
     counter++;
   } else if(choice5 === "no"){
-    alert("You chose not to include numbers in your password.");
+    alert("You chose not to include special characters in your password.");
     includeSpecChar = false;
   } else {
     alert("Please choose a proper option.");
@@ -167,7 +172,7 @@ function typeCheck(){
   }
   
   if(counter < 1){
-    alert("You did not choose to include any, please try again");
+    alert("You did not choose to include any, please try again!");
     typeCheck();
   }
 
