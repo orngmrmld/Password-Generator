@@ -172,7 +172,7 @@ function typeCheck(){
   }
   
   if(counter < 1){
-    alert("You did not choose to include any, please try again!");
+    alert("You did not choose to include any characters, please try again!");
     typeCheck();
   }
 
