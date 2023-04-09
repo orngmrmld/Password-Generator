@@ -81,18 +81,18 @@ function writePass(event){
   }else if(choice1 === null){
     return;
   } else {
-    alert("Choose a proper option");
-    writePass();
+    alert("Choose a proper option next time!");
+    return;
   }
 
 }
 
 
 // Criteria 1: Length
-// let useser choose legnth of password between 8 and 128
+// let user choose legnth of password between 8 and 128
 // when function is called, a prompt appears asking for a number between 8 and 128
-// check if the entered number is between 8 and 128 if not try again
 // convert input from string to a number
+// check if the entered number is between 8 and 128 if not try again
 function lengthCheck(){
   passLength = window.prompt("Enter a number between 8 and 128.");
   passLength = parseInt(passLength);
@@ -105,6 +105,7 @@ function lengthCheck(){
   } else if (isNaN(passLength)){
     window.alert("Pick a number please!");
     passLength = 0;
+    lengthCheck();
     return;
   } else {
     alert("You chose a length of " + passLength + " characters for your password.");
@@ -120,6 +121,8 @@ function typeCheck(){
   counter = 0;
 
   alert("You will be prompted to choose which character type to include, you must choose at least one.");
+
+  //prompt for lowercase
   let choice2 = prompt("Would you like to include lowercase characters?" + "\nYes or No?");
   choice2 = choice2.toLowerCase();
   if(choice2 === "yes"){
@@ -132,8 +135,10 @@ function typeCheck(){
   } else {
     alert("Please choose a proper option.");
     typeCheck();
+    return;
   }
-
+  
+  //prompt for uppercase
   let choice3 = prompt("Would you like to include uppercase characters?" + "\nYes or No");
   choice3 = choice3.toLowerCase();
   if(choice3 === "yes"){
@@ -146,8 +151,10 @@ function typeCheck(){
   } else {
     alert("Please choose a proper option.");
     typeCheck();
+    return;
   }
 
+  //prompt for numbers
   let choice4 = prompt("Would you like to include numbers?" + "\nYes or No");
   choice4 = choice4.toLowerCase();
   if(choice4 === "yes"){
@@ -160,8 +167,10 @@ function typeCheck(){
   } else {
     alert("Please choose a proper option.");
     typeCheck();
+    return;
   }
 
+  //prompt for special characters
   let choice5 = prompt("Would you like to include special characters?" + "\nYes or No");
   choice5 = choice5.toLowerCase();
   if(choice5 === "yes"){
@@ -174,8 +183,10 @@ function typeCheck(){
   } else {
     alert("Please choose a proper option.");
     typeCheck();
+    return;
   }
   
+  //makes sure at least one option is selected
   if(counter < 1){
     alert("You did not choose to include any characters, please try again!");
     typeCheck();
