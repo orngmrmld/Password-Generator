@@ -9,7 +9,7 @@ This is a password generator that utilizes alerts and prompts to ask the user wh
 ![Screen Shot 2023-04-09 at 3 00 32 PM](https://user-images.githubusercontent.com/127569177/230798571-e35d039f-3c99-4ccc-9e31-10817880d188.png)
 
 ## Installation
-Visit  to use.
+Visit https://orngmrmld.github.io/Password-Generator/ to use.
 
 ## Usage
 Use this to generate random passwords with varying degrees of protection.
