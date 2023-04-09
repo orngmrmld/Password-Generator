@@ -20,5 +20,4 @@ N/A
 ## License
 N/A
 
-## Known Issues
-When choosing option 3 and entering an invalid answer then reentering a valid answer, you will be prompted to choose content specifics twice 
+
