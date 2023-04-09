@@ -5,7 +5,7 @@ var generateBtn = document.querySelector("#generate");
 var includeLow, includeUp, includeSpecChar, includeNum;
 var passLength = 0;
 var counter = 0;
-const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const lower = 'abcdefghijklmnopqrstuvwxyz';
 const special = '!()-.?[]`;:#$^&*+=';
 const integers = '0123456789'
@@ -29,14 +29,19 @@ function generatePassword(length){
     characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     includeLow,includeUp,includeNum,includeSpecChar = false;
   }
-  if(includeLow)
+  if(includeLow){
   characters += lower;
-  if(includeUp)
+  }
+  if(includeUp){
   characters += upper;
-  if(includeSpecChar)
+  }
+  if(includeSpecChar){
   characters += special;
-  if(includeNum)
+  }  
+  if(includeNum){
   characters += integers;
+  }
+  
   
 
   for (let i = 0; i < length; i++){
