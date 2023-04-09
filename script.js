@@ -2,12 +2,9 @@
 var generateBtn = document.querySelector("#generate");
 
 // Global Variables I wrote
-// var includeLow = false;
-// var includeUp = false;
-// var includeNum = false;
-// var includeSpecChar = false;
+var includeLow, includeUp, includeSpecChar, includeNum;
 var passLength = 0;
-var charType = '';
+var counter = 0;
 const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 const lower = 'abcdefghijklmnopqrstuvwxyz';
 const special = '!()-.?[]`;:#$^&*+=';
@@ -90,22 +87,66 @@ function lengthCheck(){
 // shows list of character types to choose to use
 // needs to validate input and choose at least one character type
 function typeCheck(){
-  let choice2 = window.prompt("Enter a Number to choose content type: " + "\n\n(1) Case Sensitive" + "\n(2) Inlcudes Numbers" + "\n(3) Includes Special Characters" + "\n(4) SuperSecureIncludes All");
-
-  if(choice2 === '1'){
-    alert("You chose to make your password case sensitive")
-
-  } else if(choice2 === '2'){
-
-  } else if(choice2 === '3'){
-
-  } else if(choice2 === '4'){
-
-  }else {
-
+  alert("You will be prompted to choose which character type to include, you must choose at least 1");
+  let choice2 = prompt("Would you like to include lowercase characters?" + "\nYes or No?");
+  choice2 = choice2.toLowerCase();
+  if(choice2 === "yes"){
+    alert("You chose to include lowercase characters in your password.");
+    includeLow = true;
+    counter++;
+  } else if(choice2 === "no"){
+    alert("You chose not to include lowercase characters in your password.");
+    includeLow = false;
+  } else {
+    alert("Please choose a proper option.");
+    typeCheck();
   }
 
+  let choice3 = prompt("Would you like to include uppercase characters?" + "\nYes or No");
+  choice3 = choice3.toLowerCase();
+  if(choice3 === "yes"){
+    alert("You chose to include uppercase characters in your password.");
+    includeUp = true;
+    counter++;
+  } else if(choice3 === "no"){
+    alert("You chose not to include uppercase characters in your password.");
+    includeUp = false;
+  } else {
+    alert("Please choose a proper option.");
+    typeCheck();
+  }
 
+  let choice4 = prompt("Would you like to include numbers?" + "\nYes or No");
+  choice4 = choice4.toLowerCase();
+  if(choice4 === "yes"){
+    alert("You chose to include numbers in your password.");
+    includeNum = true;
+    counter++;
+  } else if(choice4 === "no"){
+    alert("You chose not to include numbers in your password.");
+    includeNum = false;
+  } else {
+    alert("Please choose a proper option.");
+    typeCheck();
+  }
 
+  let choice5 = prompt("Would you like to include special characters?" + "\nYes or No");
+  choice5 = choice5.toLowerCase();
+  if(choice5 === "yes"){
+    alert("You chose to include numbers in your password.");
+    includeSpecChar = true;
+    counter++;
+  } else if(choice5 === "no"){
+    alert("You chose not to include numbers in your password.");
+    includeSpecChar = false;
+  } else {
+    alert("Please choose a proper option.");
+    typeCheck();
+  }
+  
+  if(counter < 1){
+    alert("You did not choose to include any, please try again");
+    typeCheck();
+  }
 
 }
